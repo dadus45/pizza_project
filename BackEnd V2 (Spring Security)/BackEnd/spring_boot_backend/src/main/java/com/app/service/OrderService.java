@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.app.DTO.AddressDTO;
+import com.app.DTO.EnumDto;
 import com.app.DTO.OrderDto;
 import com.app.DTO.OrderPendingDto;
 import com.app.entity.Address;
@@ -21,5 +22,5 @@ public interface OrderService {
 
 	List<OrderPendingDto> getPendingOrders();
 
-	List<OrderPendingDto> updateOrderStatus(Long orderId, @Valid OrderStatus status);
+	List<OrderPendingDto> updateOrderStatus(Long orderId, @Valid EnumDto status);
 }

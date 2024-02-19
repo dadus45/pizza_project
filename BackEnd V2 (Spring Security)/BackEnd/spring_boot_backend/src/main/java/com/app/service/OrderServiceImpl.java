@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.DTO.AddressDTO;
+import com.app.DTO.EnumDto;
 import com.app.DTO.OrderDto;
 import com.app.DTO.OrderPendingDto;
 import com.app.entity.Address;
@@ -85,9 +86,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<OrderPendingDto> updateOrderStatus(Long orderId, @Valid OrderStatus status) {
+	public List<OrderPendingDto> updateOrderStatus(Long orderId, @Valid EnumDto status) {
 		Order order=orderRepo.findById(orderId).orElseThrow();
-		order.setOrderStatus(status);
+		order.setOrderStatus(status.getStatus());
 		orderRepo.save(order);
 		OrderPendingDto orderStatus=mapper.map(order, OrderPendingDto.class);
 		return getPendingOrders();
