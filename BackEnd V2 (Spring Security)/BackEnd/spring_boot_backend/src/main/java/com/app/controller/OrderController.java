@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.DTO.AddressDTO;
+import com.app.DTO.EnumDto;
 import com.app.DTO.OrderDto;
 import com.app.DTO.OrderPendingDto;
 import com.app.entity.Address;
@@ -47,7 +48,7 @@ public class OrderController {
 	}
 	@PreAuthorize("hasRole('admin')")
 	@PutMapping("/orders/pending/{orderId}")
-	public List<OrderPendingDto> updateOrderStatus(@PathVariable  Long orderId,@RequestBody @Valid OrderStatus status){
+	public List<OrderPendingDto> updateOrderStatus(@PathVariable  Long orderId,@RequestBody @Valid EnumDto status){
 		//http://127.0.0.1:7070/orders/Suraj123
 		return orderService.updateOrderStatus(orderId,status);
 	}
